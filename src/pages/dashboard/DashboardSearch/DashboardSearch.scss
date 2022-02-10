@@ -1,0 +1,32 @@
+.input {
+  width: 100%;
+  color: #474747;
+  background: #ffffff;
+  border: 1px solid #ebebeb;
+  border-radius: 15px;
+  padding: 14px 35px;
+  font-size: 14px;
+  &-group {
+    margin-bottom: 30px;
+  }
+  &-search-icon {
+    position: absolute;
+    left: 61px;
+    top: 137px;
+    cursor: pointer;
+  }
+  &-remark {
+    position: absolute;
+    right: 69px;
+    top: 137px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #d1d1d1;
+    background-color: #fff;
+  }
+}
+input::placeholder {
+  color: #d1d1d1;
+}
