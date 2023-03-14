@@ -1,43 +1,33 @@
-enum Type {
-  CLASSIC = "CLASSIC",
-  SERVER_SIDE = "SERVER_SIDE",
-  MVT = "MVT",
+export interface User {
+  name: { first: string; last: string };
+  email: string;
+  location: {
+    country: string;
+  };
+  dob: {
+    date: string;
+  };
+  gender: string;
+  nat: string;
+  phone: string;
+  picture: {
+    large: string;
+    medium: string;
+    thumbnail: string;
+  };
 }
 
-export enum Status {
-  DRAFT = "DRAFT",
-  ONLINE = "ONLINE",
-  PAUSED = "PAUSED",
-  STOPPED = "STOPPED",
+export enum Names {
+  EMAIL = "Email",
+  PROFILE = "Profile",
+  LOCATION = "Location",
+  BIRTHDAY = "Birthday",
+  GENDER = "Gender",
+  NATIONALITY = "Nationality",
+  PHONE = "Phone",
 }
 
-export interface Site {
-  id: number;
-  url: string;
-}
-
-export interface Test {
-  id: number;
-  name: string;
-  type: Type;
-  status: Status;
-  siteId: 1 | 2 | 3;
-}
-
-export enum SortNames {
-  STATUS = 'status',
-  NAME = 'name',
-  TYPE = 'type',
-  SITE = 'siteId',
-}
-
-export enum SortDirection {
-  ASC = 'asc',
-  DECS = 'desc',
-}
-
-export enum Colors {
-  RED = "red",
-  PURPLE = "purple",
-  BLUE = "blue",
+export enum Genders {
+  MALE = "male",
+  FEMALE = "female",
 }

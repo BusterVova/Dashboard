@@ -1,41 +1,34 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Site, Test } from "../interfaces/api";
+import { User } from "../interfaces/api";
 
 const useApiData = () => {
-  const [testData, setTestData] = useState([] as Test[]);
-  const [siteData, setSiteData] = useState([] as Site[]);
-  const [filteredTests, setFilteredTests] = useState([] as Test[]);
+  const [filteredUsers, setFilteredUsers] = useState([] as User[]);
+  const [users, setUsers] = useState([] as User[]);
+  const [isLoading, setisLoading] = useState<boolean>(false);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
-  const fetchTest = async () => {
-    const { data } = await axios.get<Test[]>("http://localhost:3100/tests");
-    setTestData(data);
-    setFilteredTests(data);
-  };
-
-  const fetchSites = async () => {
-    const { data } = await axios.get<Site[]>("http://localhost:3100/sites");
-    const preparedData = data.map(
-      ({ id, url }: { id: number; url: string }) => {
-        return {
-          id,
-          url: url.replace(/^https?:\/\//, "").replace(/www./, ""),
-        };
-      }
-    );
-    setSiteData(preparedData);
+  const fetchUsers = async () => {
+    setisLoading(true);
+    const {
+      data: { results },
+    } = await axios.get("https://randomuser.me/api/?results=1000");
+    setFilteredUsers(results);
+    setUsers(results);
+    setisLoading(false);
   };
 
   useEffect(() => {
-    fetchTest();
-    fetchSites();
+    fetchUsers();
   }, []);
 
   return {
-    testData,
-    siteData,
-    filteredTests,
-    setFilteredTests,
+    currentPage,
+    isLoading,
+    filteredUsers,
+    users,
+    setFilteredUsers,
+    setCurrentPage,
   };
 };
 

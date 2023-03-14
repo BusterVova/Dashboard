@@ -1,32 +1,35 @@
+.search-form {
+  background-color: transparent;
+}
 .input {
   width: 100%;
-  color: #474747;
-  background: #ffffff;
-  border: 1px solid #ebebeb;
+  color: white;
+  background: rgb(19, 22, 29);
+  border: none;
   border-radius: 15px;
-  padding: 14px 35px;
+  padding: 14px;
   font-size: 14px;
+
   &-group {
-    margin-bottom: 30px;
+    position: relative;
+    margin: 0 0 30px 0;
+    padding: 0;
+    width: 19.4%;
+    min-width: 140px;
+    background-color: transparent;
   }
+
   &-search-icon {
     position: absolute;
-    left: 61px;
-    top: 137px;
+    right: 1em;
+    top: 1em;
     cursor: pointer;
-  }
-  &-remark {
-    position: absolute;
-    right: 69px;
-    top: 137px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 16px;
-    color: #d1d1d1;
-    background-color: #fff;
   }
 }
 input::placeholder {
-  color: #d1d1d1;
+  color: rgb(108, 106, 106);
+  text-align: left;
+}
+input:focus {
+  outline: none !important;
 }

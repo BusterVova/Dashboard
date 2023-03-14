@@ -1,8 +1,10 @@
 import React from "react";
+
 interface Props {
   className: string;
 }
-const Sort: React.FC<Props> = ({ className }) => {
+
+const Arrow: React.FC<Props> = ({ className }) => {
   return (
     <svg
       width="7"
@@ -20,4 +22,4 @@ const Sort: React.FC<Props> = ({ className }) => {
   );
 };
 
-export default Sort;
+export default Arrow;
