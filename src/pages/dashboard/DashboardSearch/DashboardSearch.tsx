@@ -4,18 +4,18 @@ import "./DashboardSearch.scss";
 
 interface Props {
   searchValue: string;
-  handleInput: ChangeEventHandler<HTMLInputElement>;
-  handleFilters: () => void;
+  onChangeInput: ChangeEventHandler<HTMLInputElement>;
+  onChangeSearchFilter: () => void;
 }
 
 const Input: React.FC<Props> = ({
   searchValue,
-  handleInput,
-  handleFilters,
+  onChangeInput,
+  onChangeSearchFilter,
 }) => {
   const submitSearch: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    handleFilters();
+    onChangeSearchFilter();
   };
   return (
     <form onSubmit={submitSearch} className="search-form">
@@ -25,7 +25,7 @@ const Input: React.FC<Props> = ({
           type="text"
           className="input"
           placeholder="Search"
-          onChange={handleInput}
+          onChange={onChangeInput}
         />
         <Search />
       </div>

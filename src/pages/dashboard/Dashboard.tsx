@@ -66,19 +66,20 @@ const Dashboard = () => {
 
   const lastUserIndex = currentPage * rowsNumber;
   const firstUserIndex = lastUserIndex - rowsNumber;
-  console.log({ firstUserIndex, lastUserIndex });
+
   const currentUsers = filteredUsers.slice(firstUserIndex, lastUserIndex);
 
   const nationalities = users.map((el) => el.nat);
 
   const handleInput: React.ChangeEventHandler<HTMLInputElement> = useCallback(
     (e) => {
+      setCurrentPage(1);
       setSearchValue(e.target.value);
     },
     []
   );
 
-  const handleFilters = useCallback(() => {
+  const handleSearchFilter = useCallback(() => {
     setFilteredUsers(
       filteredUsers.filter((user) => {
         const name = `${user.name.first.toLowerCase()} ${user.name.last.toLowerCase()}`;
@@ -102,8 +103,8 @@ const Dashboard = () => {
     <div className="container">
       <DashboardSearch
         searchValue={searchValue}
-        handleInput={handleInput}
-        handleFilters={handleFilters}
+        onChangeInput={handleInput}
+        onChangeSearchFilter={handleSearchFilter}
       />
       <div className="filters-wrapper">
         <Filters
