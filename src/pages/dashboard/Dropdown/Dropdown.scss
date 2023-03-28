@@ -5,7 +5,11 @@
 
   &-btn {
     padding: 10px;
-    color: white;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #dcd8d3;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -23,7 +27,7 @@
   &-content {
     position: absolute;
     bottom: 130%;
-    right: 0.5em;
+    right: 2%;
     z-index: 1000;
     color: white;
     width: 100px;

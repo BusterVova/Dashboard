@@ -1,5 +1,8 @@
 export interface User {
   name: { first: string; last: string };
+  login: {
+    uuid: string;
+  };
   email: string;
   location: {
     country: string;

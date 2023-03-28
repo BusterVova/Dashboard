@@ -6,7 +6,7 @@
   color: white;
   background: rgb(19, 22, 29);
   border: none;
-  border-radius: 15px;
+  border-radius: 16px;
   padding: 14px;
   font-size: 14px;
 
@@ -14,8 +14,7 @@
     position: relative;
     margin: 0 0 30px 0;
     padding: 0;
-    width: 19.4%;
-    min-width: 140px;
+    max-width: 305px;
     background-color: transparent;
   }
 
@@ -27,8 +26,12 @@
   }
 }
 input::placeholder {
-  color: rgb(108, 106, 106);
+  color: #8c8988;
   text-align: left;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
 }
 input:focus {
   outline: none !important;

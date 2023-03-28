@@ -29,6 +29,7 @@ const Footer: React.FC<Props> = ({
     },
     [setCurrentpage]
   );
+
   return (
     <div className="footer">
       <div className="pages-wrapper">
@@ -41,17 +42,16 @@ const Footer: React.FC<Props> = ({
             <Arrow className="arrow-icon__left"></Arrow>
           </div>
         </button>
-        <div className="pages">
-          {`${currentPage} of
-          ${
-            Math.ceil(users.length / rowsNumber) > 10
-              ? 10
-              : Math.ceil(users.length / rowsNumber)
-          }`}
-        </div>
+        <div className="pages">{`${currentPage} of ${
+          users.length !== 10 ? Math.ceil(users.length / rowsNumber) : 10
+        }`}</div>
         <button
           className="arrow-button"
-          disabled={currentPage === Math.ceil(users.length / rowsNumber)}
+          disabled={
+            users.length !== 10
+              ? currentPage === Math.ceil(users.length / rowsNumber)
+              : currentPage === 10
+          }
           onClick={() => handlePagination(false)}
         >
           <div className="arrow-wrapper">
@@ -65,7 +65,7 @@ const Footer: React.FC<Props> = ({
           rowsNumber={rowsNumber}
           setRowsNumber={setRowsNumber}
           setCurrentpage={setCurrentpage}
-        ></Dropdown>
+        />
       </div>
     </div>
   );

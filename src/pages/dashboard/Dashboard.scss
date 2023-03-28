@@ -1,12 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@300;400;500&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;1,300&display=swap");
+
 * {
-  font-family: "Roboto", "sans-serif";
+  font-family: "Jura", "sans-serif";
 }
 .container {
-  margin: 41px 52px 0 48px;
-  border: 1px solid rgb(51, 41, 41);
-  border-radius: 15px;
+  margin: 32px;
+  border: 1px solid rgba(207, 123, 90, 0.2);
+  border-radius: 40px;
   padding: 20px;
   background-color: rgb(27, 28, 35);
 }

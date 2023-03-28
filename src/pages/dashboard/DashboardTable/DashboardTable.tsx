@@ -20,9 +20,7 @@ const Table: React.FC<Props> = ({ titles, users, isLoading }) => {
             {titles.map((title, idx) => {
               return (
                 <th key={idx} className="header">
-                  <div className="sort">
-                    <p className="sort">{title}</p>
-                  </div>
+                  {title}
                 </th>
               );
             })}
@@ -31,8 +29,18 @@ const Table: React.FC<Props> = ({ titles, users, isLoading }) => {
         {!isLoading ? (
           <tbody>
             {users.map(
-              ({ name, email, location, dob, gender, nat, phone, picture }) => (
-                <React.Fragment key={email}>
+              ({
+                name,
+                email,
+                location,
+                dob,
+                gender,
+                nat,
+                phone,
+                picture,
+                login,
+              }) => (
+                <React.Fragment key={login.uuid}>
                   <tr className="inside">
                     <td className="data data__profile">
                       <div className="name-wrapper">

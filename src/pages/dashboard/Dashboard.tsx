@@ -13,70 +13,56 @@ const Dashboard = () => {
     Gender: "",
     Nation: "",
   });
-  const [rowsNumber, setRowsNumber] = useState<number>(10);
 
   const {
     users,
     filteredUsers,
-    setFilteredUsers,
     isLoading,
     currentPage,
+    rowsNumber,
+    setRowsNumber,
+    setFilteredUsers,
     setCurrentPage,
+    fetchUsers,
   } = useApiData();
 
   useEffect(() => {
+    fetchUsers(selectedFilters, currentPage, rowsNumber);
+  }, [selectedFilters, currentPage, rowsNumber]);
+
+  useEffect(() => {
     setFilteredUsers(users);
-    if (selectedFilters.Gender && selectedFilters.Nation) {
-      setFilteredUsers((prev) =>
-        prev.filter((user) => {
-          return (
-            user.gender === selectedFilters.Gender &&
-            selectedFilters.Nation === user.nat
-          );
-        })
-      );
-    } else {
-      if (selectedFilters.Gender) {
-        setFilteredUsers((prev) =>
-          prev.filter((user) => {
-            return user.gender === selectedFilters.Gender;
-          })
-        );
-      }
-      if (selectedFilters.Nation) {
-        setFilteredUsers((prev) =>
-          prev.filter((user) => {
-            return selectedFilters.Nation === user.nat;
-          })
-        );
-      }
-    }
-    if (!selectedFilters.Gender && !selectedFilters.Nation) {
-      setFilteredUsers(users);
-    }
     if (searchValue) {
-      setFilteredUsers((prev) =>
-        prev.filter((user) => {
+      setFilteredUsers(
+        filteredUsers.filter((user) => {
           const name = `${user.name.first.toLowerCase()} ${user.name.last.toLowerCase()}`;
           return name.includes(searchValue.trim().toLocaleLowerCase());
         })
       );
     }
-  }, [selectedFilters, searchValue, setFilteredUsers, users]);
+  }, [searchValue]);
 
-  const lastUserIndex = currentPage * rowsNumber;
-  const firstUserIndex = lastUserIndex - rowsNumber;
+  const defaultNationalities = users.map((el) => el.nat);
 
-  const currentUsers = filteredUsers.slice(firstUserIndex, lastUserIndex);
+  const [nations, setNations] = useState<string[]>(defaultNationalities);
 
-  const nationalities = users.map((el) => el.nat);
+  useEffect(() => {
+    window.localStorage.setItem(
+      "nationalities",
+      JSON.stringify(defaultNationalities)
+    );
+  }, [isLoading]);
+
+  useEffect(() => {
+    setNations(JSON.parse(localStorage.getItem("nationalities") || ""));
+  }, [isLoading]);
 
   const handleInput: React.ChangeEventHandler<HTMLInputElement> = useCallback(
     (e) => {
       setCurrentPage(1);
       setSearchValue(e.target.value);
     },
-    []
+    [setCurrentPage]
   );
 
   const handleSearchFilter = useCallback(() => {
@@ -110,12 +96,12 @@ const Dashboard = () => {
         <Filters
           selectedFilters={selectedFilters}
           setSelectedFilters={setSelectedFilters}
-          nationalities={Array.from(new Set(nationalities))}
+          nationalities={Array.from(new Set(nations))}
         />
       </div>
       <DashboardTable
         titles={titles}
-        users={currentUsers}
+        users={filteredUsers}
         isLoading={isLoading}
       />
       <Footer

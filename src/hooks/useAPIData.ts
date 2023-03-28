@@ -7,28 +7,38 @@ const useApiData = () => {
   const [users, setUsers] = useState([] as User[]);
   const [isLoading, setisLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [rowsNumber, setRowsNumber] = useState<number>(10);
 
-  const fetchUsers = async () => {
+  const fetchUsers = async (
+    selectedFilters: {
+      Gender: string;
+      Nation: string;
+    },
+    page: number,
+    rows: number
+  ) => {
     setisLoading(true);
     const {
       data: { results },
-    } = await axios.get("https://randomuser.me/api/?results=1000");
+    } = await axios.get(
+      `https://randomuser.me/api/?page=${page}&results=${rows}&nat=${selectedFilters.Nation}&gender=${selectedFilters.Gender}`
+    );
+
     setFilteredUsers(results);
     setUsers(results);
     setisLoading(false);
   };
-
-  useEffect(() => {
-    fetchUsers();
-  }, []);
 
   return {
     currentPage,
     isLoading,
     filteredUsers,
     users,
+    rowsNumber,
+    setRowsNumber,
     setFilteredUsers,
     setCurrentPage,
+    fetchUsers,
   };
 };
 

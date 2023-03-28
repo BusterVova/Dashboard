@@ -4,7 +4,7 @@
 }
 .table {
   border: 1px solid #181b22;
-  border-radius: 15px;
+  border-radius: 16px;
   padding: 15px;
   display: flex;
   overflow-x: auto;
@@ -23,8 +23,8 @@ table {
 }
 
 td {
-  border-top: 1px solid rgb(56, 44, 43);
-  border-bottom: 1px solid rgb(56, 44, 43);
+  border-top: 1px solid rgba(207, 123, 90, 0.2);
+  border-bottom: 1px solid rgba(207, 123, 90, 0.2);
 }
 th,
 td {
@@ -32,8 +32,14 @@ td {
   padding: 16px;
   text-align: left;
   margin: 5px 0;
-  color: white;
+  color: rgba(220, 216, 211, 1);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 15px;
 }
+
 th {
   color: #999999;
   font-weight: 500;
@@ -42,21 +48,16 @@ th {
 }
 
 .data {
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 15px;
-  font-style: normal;
   background-color: #181b22;
-  padding: 20px;
 
   &__profile {
     border-radius: 10px 0 0 10px;
-    border-left: 1px solid rgb(56, 44, 43);
+    border-left: 1px solid rgba(207, 123, 90, 0.2);
   }
 
   &__phone {
     border-radius: 0 10px 10px 0;
-    border-right: 1px solid rgb(56, 44, 43);
+    border-right: 1px solid rgba(207, 123, 90, 0.2);
   }
 }
 
@@ -67,7 +68,7 @@ th {
 }
 
 .name__data {
-  color: white;
+  color: rgba(220, 216, 211, 1);
   background-color: transparent;
   margin-left: 20px;
 }
@@ -77,8 +78,8 @@ th {
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid rgb(150, 92, 71);
-  min-height: 50px;
-  min-width: 50px;
+  min-height: 34px;
+  min-width: 34px;
 }
 .circle-image img {
   width: 100%;
@@ -88,6 +89,11 @@ th {
 
 .header {
   background-color: #14161e;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: rgba(140, 137, 136, 1);
 }
 
 .skeleton {

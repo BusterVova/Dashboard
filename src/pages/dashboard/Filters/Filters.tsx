@@ -123,11 +123,11 @@ const Dropdown: React.FC<Props> = ({
           <div className="dropdown-header">
             {selectedFilters.Nation ? (
               <>
-                <div>Nation</div>
+                <div>Nationality</div>
                 <div className="dropdown__nation">{selectedFilters.Nation}</div>
               </>
             ) : (
-              "Nation"
+              "Nationality"
             )}
           </div>
           {selectedFilters.Nation && (
